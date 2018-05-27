@@ -13,6 +13,7 @@
     <div id="list">
         My Library
     </div>
+
     <table>
         <tr>
             <th>Title</th>
@@ -22,6 +23,25 @@
         </tr>
     </table>
 
+    <div>
+
+        <button>New Book</button>
+        <div id="newBookForm" class="hidden">
+            <label for="title">Title:</label>
+            <input type="text" name="title">
+
+            <label for="author">Author:</label>
+            <input type="text" name="author">
+
+            <label for="pages">Pages:</label>
+            <input type="number" name="pages">
+
+            <label for="read">Read:</label>
+            <input type="checkbox" name="read">
+
+            <button>Add</button>
+        </div>
+    </div>
 </body>
 <script src="scripts.js"></script>
 

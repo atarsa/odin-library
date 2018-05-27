@@ -30,3 +30,10 @@ function render(){
     }
 }
 render();
+
+// add new book form
+const newBookBtn = document.querySelector('button');
+newBookBtn.onclick = function(){
+    const newBookForm = document.querySelector('#newBookForm');
+    newBookForm.classList.toggle('hidden');
+}
