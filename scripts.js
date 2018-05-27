@@ -44,19 +44,22 @@ newBookBtn.onclick = function(){
 const addBookBtn = document.querySelector('#addBook');
 
 addBookBtn.onclick = function(){
-   let title = document.querySelector('[name="title"]');
-   let author = document.querySelector('[name="author"]');
-   let pages = document.querySelector('[name="pages"]');
-   let read = document.querySelector('[name="read"]');
+   let newBookTitle = document.querySelector('[name="title"]');
+   let newBookAuthor = document.querySelector('[name="author"]');
+   let newBookPages = document.querySelector('[name="pages"]');
+   let newBookRead = document.querySelector('[name="read"]');
 
-   let newRecord = new Book(title.value, author.value, pages.value, read.value);
+   let newBook = new Book(newBookTitle.value, 
+    newBookAuthor.value, 
+    newBookPages.value, 
+    newBookRead.checked);
 
-   addBookToLibrary(newRecord);
+   addBookToLibrary(newBook);
    //clean form's inputs
-   title.value = "";
-   author.value = "";
-   pages.value = "";
-   read.value = "";
+   newBookTitle.value = "";
+   newBookAuthor.value = "";
+   newBookPages.value = "";
+   newBookRead.chcecked = false;
      
    render();
 
