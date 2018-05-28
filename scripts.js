@@ -14,22 +14,43 @@ function addBookToLibrary(Book) {
     myLibrary.push(Book);
 }
 
-// for debugging
+// hardcoded books records
 const year1984 = new Book("year1984", "G.Orwell", 333, false);
 addBookToLibrary(year1984)
 const harryPotter = new Book("Harry Potter", "JKR", 400, true);
 addBookToLibrary(harryPotter)
 console.table(myLibrary);
 
-function render(){
+const bookList = document.querySelector('#bookList');
 
-    const table = document.querySelector('table');
-    table.innerHTML = "";
-    
+function render(){
+    bookList.innerHTML = "";
     
     for (let i = 0; i < myLibrary.length; i++){
-        table.innerHTML += '<tr>' + '<td>' + myLibrary[i].title + '</td>'+ '<td>' + myLibrary[i].author + '</td>' + '<td>' + myLibrary[i].pages + '</td>' + '<td>' + myLibrary[i].read + '</td>' + '</tr>';
-    }
+        const div = document.createElement('div');
+   
+        const authorDiv = document.createElement('p');
+        const titleDiv = document.createElement('p');
+        const pagesDiv = document.createElement('p');
+        const readDiv = document.createElement('p');
+
+        titleDiv.textContent = `${myLibrary[i].title}`;
+        authorDiv.textContent = `${myLibrary[i].author}`;
+        pagesDiv.textContent = `${myLibrary[i].pages}`;
+        readDiv.textContent = `${myLibrary[i].read}`;
+
+        div.classList.add('shelf');
+
+        div.appendChild(titleDiv);
+        div.appendChild(authorDiv);
+        div.appendChild(pagesDiv);
+        div.appendChild(readDiv);
+
+        bookList.appendChild(div);
+        
+    }    
+
+    
 }
 
 
