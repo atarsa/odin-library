@@ -23,6 +23,7 @@ console.table(myLibrary);
 
 const bookList = document.querySelector('#bookList');
 
+
 function render(){
     bookList.innerHTML = "";
     
@@ -33,6 +34,9 @@ function render(){
         const titleDiv = document.createElement('p');
         const pagesDiv = document.createElement('p');
         const readDiv = document.createElement('p');
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = "Delete";
 
         titleDiv.textContent = `${myLibrary[i].title}`;
         authorDiv.textContent = `${myLibrary[i].author}`;
@@ -45,9 +49,12 @@ function render(){
         div.appendChild(authorDiv);
         div.appendChild(pagesDiv);
         div.appendChild(readDiv);
-
+        div.appendChild(deleteBtn);
         bookList.appendChild(div);
         
+        deleteBtn.onclick = function(e) {
+            bookList.removeChild(div);
+        }
     }    
 
     
@@ -87,4 +94,9 @@ addBookBtn.onclick = function(){
    newBookForm.classList.add('hidden');
 
 }
+// delete book from the library
+
+// deleteBtn.onclick = function(){
+//     console.log(this);
+// }
 render();
