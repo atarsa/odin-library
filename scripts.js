@@ -36,7 +36,10 @@ function render(){
         const readDiv = document.createElement('p');
 
         const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('delete-btn');
         deleteBtn.textContent = "Delete";
+
+        const bookId = i;
 
         titleDiv.textContent = `${myLibrary[i].title}`;
         authorDiv.textContent = `${myLibrary[i].author}`;
@@ -45,6 +48,7 @@ function render(){
 
         div.classList.add('shelf');
 
+        div.setAttribute('data-bookId', bookId);
         div.appendChild(titleDiv);
         div.appendChild(authorDiv);
         div.appendChild(pagesDiv);
@@ -52,9 +56,8 @@ function render(){
         div.appendChild(deleteBtn);
         bookList.appendChild(div);
         
-        deleteBtn.onclick = function(e) {
-            bookList.removeChild(div);
-        }
+        deleteBtn.addEventListener('click', deleteBook);
+        
     }    
 
     
@@ -71,7 +74,9 @@ newBookBtn.onclick = function(){
 // update myLibrary list with a new book
 const addBookBtn = document.querySelector('#addBook');
 
-addBookBtn.onclick = function(){
+addBookBtn.addEventListener('click', addBook);
+
+function addBook() {
    let newBookTitle = document.querySelector('[name="title"]');
    let newBookAuthor = document.querySelector('[name="author"]');
    let newBookPages = document.querySelector('[name="pages"]');
@@ -96,7 +101,26 @@ addBookBtn.onclick = function(){
 }
 // delete book from the library
 
-// deleteBtn.onclick = function(){
-//     console.log(this);
-// }
+function deleteBook(e){
+    
+    // get book-id by traversing DOM tree
+    const bookId =e.target.parentNode.attributes[1].nodeValue;
+    
+    // get index of book from books array, update the array
+    const index = myLibrary.indexOf(bookId);
+    myLibrary.splice(index,1)
+
+    // delete div element 
+    bookList.removeChild(e.target.parentNode);
+
+    
+
+}
+
+
+
+
 render();
+
+// // add event listener to delete button(s)
+// const deleteBtns = document.gs
