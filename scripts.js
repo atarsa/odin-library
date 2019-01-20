@@ -1,6 +1,13 @@
+// hardcoded books records
+const year1984 = new Book("year1984", "G.Orwell", 333, 'Read');
+const harryPotter = new Book("Harry Potter", "JKR", 400, 'Reading');
 
-let myLibrary = [];
+// UI variables
+const bookList = document.querySelector('#bookList');
+const newBookBtn = document.querySelector('.btn--new-book');
+const newBookForm = document.querySelector('#newBookForm');
 
+// Book prototype
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -9,20 +16,9 @@ function Book(title, author, pages, read) {
     
 }
 
-
 function addBookToLibrary(Book) {
     myLibrary.push(Book);
 }
-
-// hardcoded books records
-const year1984 = new Book("year1984", "G.Orwell", 333, false);
-addBookToLibrary(year1984)
-const harryPotter = new Book("Harry Potter", "JKR", 400, true);
-addBookToLibrary(harryPotter)
-console.table(myLibrary);
-
-const bookList = document.querySelector('#bookList');
-
 
 function render(){
     bookList.innerHTML = "";
@@ -59,68 +55,66 @@ function render(){
         deleteBtn.addEventListener('click', deleteBook);
         
     }    
+   
+}
+
+function addBook(e) {
+   let newBookTitle = newBookForm.querySelector('[name="title"]');
+   let newBookAuthor = newBookForm.querySelector('[name="author"]');
+   let newBookPages = newBookForm.querySelector('[name="pages"]');
+   let newBookRead = newBookForm.querySelector('[name="read"]');
+
+   
+   let newBook = new Book(newBookTitle.value, 
+       newBookAuthor.value, 
+       newBookPages.value, 
+       newBookRead.value);
 
     
-}
-
-
-// toggle new book form
-const newBookBtn = document.querySelector('button');
-newBookBtn.onclick = function(){
-    const newBookForm = document.querySelector('#newBookForm');
-    newBookForm.classList.toggle('hidden');
-}
-
-// update myLibrary list with a new book
-const addBookBtn = document.querySelector('#addBook');
-
-addBookBtn.addEventListener('click', addBook);
-
-function addBook() {
-   let newBookTitle = document.querySelector('[name="title"]');
-   let newBookAuthor = document.querySelector('[name="author"]');
-   let newBookPages = document.querySelector('[name="pages"]');
-   let newBookRead = document.querySelector('[name="read"]');
-
-   let newBook = new Book(newBookTitle.value, 
-    newBookAuthor.value, 
-    newBookPages.value, 
-    newBookRead.checked);
-
+    // update mylibrary array
    addBookToLibrary(newBook);
+   
+
    //clean form's inputs
    newBookTitle.value = "";
    newBookAuthor.value = "";
    newBookPages.value = "";
-   newBookRead.chcecked = false;
-     
-   render();
-
+   newBookRead.value = "Read";
+   
+   //hide add book form
    newBookForm.classList.add('hidden');
-
+   
+   e.preventDefault();
+   render();
 }
-// delete book from the library
 
+// delete book from the library
 function deleteBook(e){
-    
     // get book-id by traversing DOM tree
-    const bookId =e.target.parentNode.attributes[1].nodeValue;
+    const bookId = e.target.parentNode.attributes[1].nodeValue;
     
-    // get index of book from books array, update the array
-    const index = myLibrary.indexOf(bookId);
-    myLibrary.splice(index,1)
+    // book-id correspond to book index in array, delete the book from the array
+    myLibrary.splice(bookId,1)
 
     // delete div element 
     bookList.removeChild(e.target.parentNode);
-
-    
-
+   
 }
 
 
+let myLibrary = [];
 
+addBookToLibrary(year1984)
+addBookToLibrary(harryPotter)
+
+// Add Event Listeners
+
+// show add new book form
+newBookBtn.addEventListener('click', function(){
+    newBookForm.classList.toggle('hidden');
+}) 
+
+// submit new book
+newBookForm.addEventListener('submit', addBook);
 
 render();
-
-// // add event listener to delete button(s)
-// const deleteBtns = document.gs
