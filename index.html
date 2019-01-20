@@ -12,10 +12,12 @@
 <body>
     <div class="container">
         <div class="row">
-            <h1 class="twelve columns"> My Library </h1>
+            <h3 class="twelve columns"> Odin Library </h3>
+        </div>
+        <div class="row">
+            <button class="btn btn--new-book four columns u-full-width">Add New Book</button>
         </div>
 
-        <button class="btn btn--new-book">New Book</button>
         <form id="newBookForm" class="form hidden">
             <div class="row">
                 <div class="eight columns">
@@ -45,23 +47,21 @@
                 </div>
             </div>
             <div class="row">
-                <div class="eight columns">
-                    <input type="submit" id="addBook" class="button u-full-width" value="Add" />
+                <div class="eight columns ">
+                    <input type="submit" id="addBook" class=" btn--add-book u-full-width" value="Add" />
 
                 </div>
             </div>
         </form>
 
 
-        <div class=" shelf top u-full-width">
-            <p>Title</p>
-            <p>Author</p>
-            <p>Pages</p>
-            <p>Status</p>
+        <div class="shelf__top ">
+            <div>Title</div>
+            <div>Author</div>
+            <div>Pages</div>
+            <div>Status</div>
+            <div></div>
         </div>
-
-
-
 
         <div id="bookList"></div>
     </div>

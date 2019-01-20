@@ -1,6 +1,6 @@
 // hardcoded books records
-const year1984 = new Book("year1984", "G.Orwell", 333, 0);
-const harryPotter = new Book("Harry Potter", "JKR", 400, 1);
+const year1984 = new Book("year1984", "G. Orwell", 333, 0);
+const harryPotter = new Book("Harry Potter", "J. Rowling", 400, 1);
 
 // UI variables
 const bookList = document.querySelector('#bookList');
@@ -46,7 +46,7 @@ function render(){
         
 
         const deleteBtn = document.createElement('button');
-        deleteBtn.classList.add('delete-btn');
+        deleteBtn.classList.add('btn--delete');
         deleteBtn.textContent = "Delete";
 
         const bookId = i;

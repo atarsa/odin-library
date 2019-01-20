@@ -1,15 +1,63 @@
+h3 {
+    padding: 2rem 0;
+}
+
+.form {
+    display: block;
+    visibility: visible;
+    margin: 2rem auto;
+}
+
 .hidden {
     display: none;
-    visibility: hidden;
 }
 
 .shelf {
     margin: 1rem;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+
 }
 
-.top {
+.shelf div {
+    padding: 0 .5em;
+    flex: 1 1;
+    justify-self: center;
+
+}
+
+.shelf__top {
     font-weight: 700;
-    margin: 3rem 0;
+    margin: 3rem 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.shelf__top div {
+    padding: 0 .5em;
+    flex: 1 1;
+}
+
+/* buttons */
+
+.btn--new-book,
+input[type=submit].btn--add-book {
+    background: #7cc492;
+    color: rgb(77, 77, 77);
+    transition: all .3s ease-in-out;
+}
+
+.btn--new-book:hover,
+input[type=submit].btn--add-book:hover {
+    color: #7cc492;
+    background: #fff;
+    border: 2px solid #77c492;
+}
+
+.btn--delete {
+    color: #fff;
+    background: #dd7b5a;
+
 }
