@@ -1,6 +1,3 @@
-// hardcoded books records
-const year1984 = new Book("year1984", "G. Orwell", 333, 0);
-const harryPotter = new Book("Harry Potter", "J. Rowling", 400, 1);
 
 // UI variables
 const bookList = document.querySelector('#bookList');
@@ -8,17 +5,26 @@ const newBookBtn = document.querySelector('.btn--new-book');
 const newBookForm = document.querySelector('#newBookForm');
 
 // Book prototype
-function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
+class Book {
+    constructor(title, author, pages, status){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+        
+        
+    }
+    addBookToLibrary(){
+        
+        myLibrary.push(this);
+    }
+   
     
 }
 
-function addBookToLibrary(Book) {
-    myLibrary.push(Book);
-}
+// function addBookToLibrary(Book) {
+//     myLibrary.push(Book);
+// }
 
 function render(){
     bookList.innerHTML = "";
@@ -73,7 +79,7 @@ function render(){
 }
 
 function addBook(e) {
-    console.log("add book funvtion")
+   
    let newBookTitle = newBookForm.querySelector('[name="title"]');
    let newBookAuthor = newBookForm.querySelector('[name="author"]');
    let newBookPages = newBookForm.querySelector('[name="pages"]');
@@ -84,11 +90,9 @@ function addBook(e) {
        newBookAuthor.value, 
        newBookPages.value, 
        newBookStatus.selectedIndex)
-       //newBookStatus[newBookStatus.selectedIndex].value);
-
-    console.log(newBook)
+       
     // update mylibrary array
-   addBookToLibrary(newBook);
+   newBook.addBookToLibrary();
    
 
    //clean form's inputs
@@ -119,9 +123,12 @@ function deleteBook(e){
 
 
 let myLibrary = [];
+// hardcoded books records
+const year1984 = new Book("year1984", "G. Orwell", 333, 0);
+const harryPotter = new Book("Harry Potter", "J. Rowling", 400, 1);
 
-addBookToLibrary(year1984)
-addBookToLibrary(harryPotter)
+year1984.addBookToLibrary();
+harryPotter.addBookToLibrary();
 
 // Add Event Listeners
 
